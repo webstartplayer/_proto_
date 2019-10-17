@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		/*
+		var foo ={
+			name:"jack",
+			age:20,
+			get age(){return age;},
+			set age(val){this.age=+val;}
+		}
+		
+		console.log(foo instanceof Object);
+		
+		function fooo(){}
+			
+		
+		
+		
+		
+		var x = new fooo();
+		
+		
+		
+		console.log(Object.getOwnPropertyDescriptor(Function,'prototype'));
+
+		console.log(typeof fooo());
+		*/
+	   
+	   /*
+	   var num = [1,2,3,4,5,6];
+	   var num1 = [7,8,9];
+	   Array.prototype.push.apply(num,num1);
+	  console.log(num);
+	   */
+	  
+	  
+	 
+/*	  var num = [1,4,7,9,11,32];
+	  var a = Math.max.apply(Math,num);
+	  console.log(a);
+	*/
+   
+   
+   //javascript 中this 的指向问题
+   
+   // 全局作用域下的this => window
+	 /*
+	 this.a=1;
+	 console.log(window.a);
+   */
+   //一般函数构造器中的this=>window
+    /*
+	 function foo(){
+		 return this;
+	 }
+	 console.log(foo()); 
+	  */
+	 
+	 //对象函数方法中的this=>对象
+	 /*
+	 var o = {
+		 name:"jack",
+		 fn:function(){
+			 return this.name;
+		 }
+	 }
+	 
+	 console.log(o.fn());
+	 */
+	
+	//原型链上的this=>原型链下端的对象
+	
+	/*
+	var o = {
+		fn:function(){
+			return this.a+this.b;
+		}
+	}
+	
+	var x = Object.create(o);
+	x.a=1;
+	x.b=2;
+	
+	console.log(x.fn());
+	*/
+   
+   //对象 get set 方法中 this=>对象
+     
+	 
+   // 构造器里面的this=>一个空的对象(原型为foo.prototype)
+     /*
+      function foo(){
+		  this.a=1;
+		  }
+		 //默认没有返回值时, 会返回this.
+	  
+   
+    var o = new foo();
+    console.log(o.a);
+	console.log(foo.a);
+	*/
+   //函数构造器 有返回值 且返回值不是对象时,this=>foo.prototype镜像,当返回值是对象时,就只能在返回对象中寻找
+   
+   //apply call与this this=>函数构造器创建的对象
+   /*
+    function add(c,d){
+		var x=this.a+this.b+c+d;
+		return x;
+	}
+   
+   var o = {
+	   a:1,
+	   b:2
+   }
+   
+   var y = add.apply(o,[10,20]);
+   console.log(y);
+   */
+   
+   
+	
+	//apply call 方法  apply(this,[args]);this=>你想指定的上下文,可以是javascript一切对象.
+	// call(this,args)
+	/*
+	var a = [1,2,3];
+	var b = [4,5,6];
+    Array.prototype.push.apply(a,b);
+	console.log(a);
+	
+   function log(){
+	   console.log.apply(console,arguments);
+   }
+	
+   log(a);
+	*/
+   
+   
+   //bind方法   函数.bind(this指向的对象)
+   /*
+   function getage(){
+	   return this.a+this.b;
+   }
+   
+   var obj = {
+	   a:4,
+	   b:5
+   }
+   
+   var x = getage.bind(obj);
+   console.log(x());
+   */
+/*  
+  a=1;
+  function foo(){
+	  console.log(a);
+  }
+  foo();
+	*/
+   
+   //对原型链的深入理解  _proto_的理解  prototype:对象属性  _proto_=原型
+   
+   /*
+   function person(name,age){
+	   this.name = name;
+	   this.age = age;
+	    }
+		
+		  person.prototype.LEGNUM= 2;
+		
+		  person.prototype.hi=function(){
+			  console.log("my name is "+this.name+"my age is"+this.age);
+		  }
+         
+		  person.prototype.walk = function(){
+			  console.log(this.name+" is walking");
+		  }
+	      
+
+   
+   function student(name,age,classmate,trans){
+	   person.call(this,name,age);
+	   this.classmate = classmate;
+	   this.trans = trans;
+	   
+	   student.prototype.__proto__ = person.prototype;
+	   
+	   student.prototype.constructor = student;
+	   
+	   
+	   }
+	   
+
+   
+   var o = new student("bosn",20,201,"sub");
+   console.log(o.hi());
+   */
+  
+   //  let  var  const  区别
+   /*
+   let c = 2;
+   
+   function foo(){
+	   let c=1;
+	   console.log(c);
+   }
+    foo();
+   console.log(c);
+   */
+   
+   /*
+   var a = 1;
+   
+   function foo(){
+	   var a = 2;
+	   console.log(a);
+   }
+   foo();
+   console.log(a);
+   */
+   
+   //回调函数
+   
+   //arguments 作用: 方法重载
+   
+   /*
+   function foo(){
+     if(typeof arguments[0]=="number"){
+		 console.log("传入的函数为数字");
+	 }else if(typeof arguments[0]=="object"){
+		 console.log("传入的参数为对象");
+	 }
+   }
+   var o  = new Object();
+   foo(1);
+   foo(o);
+   */
+  
+  //回调函数
+  /*
+  function foo(number){
+	  return number;
+  }
+  
+  function obj(callback,val){
+	   var x = callback(val);
+	   console.log(x);
+  }
+  
+  obj(foo,1);
+   */
+	</script>
+	<body>
+		
+	</body>
+</html>
